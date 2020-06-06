@@ -1,0 +1,18 @@
+DRANCA STEFANA-IOANA 314CC
+
+Cand se apeleaza executabilul trebuie adaugate ca argumente in linia de comanda fisiere ce contin sub forma de matrici de 0 si 1 (1 acolo unde sunt parti de vapoare si 0 unde nu), configuratii valide pentru harta jucatorului. Un exemplu este fisierul player_map. In cazul in care nu se dau argumente de comanda se inchide automat programul. Odata ce programul este pornit, se afiseaza meniul care contine New Game, Resume sau Quit. Daca se alege New Game se cere jucatoruui sa aleaga numarul fisierului care sa ii genereze gridul. Atunci cand jucatorul intra pentru prima data in joc, daca jucatorul alege Resume, rezultatul va fi echivalent cu optiunea New Game (functia Check_first verifica daca jucatorul a mai inceput un joc sau nu, verificand daca a atacat vreo celula din gridul computerului).
+ 
+Pe parcursul programului sunt utilizate 2 matrici de tip char, una pentru player si una pentru coputer, matrici in care vom retine configuratiile, in forma vizibila pentru utilizator la fiecare moment de timp. Pentru fiecare dintre cei doi jucatori (uman si computer) exista cate 2 matrici de tip char. In una din ele (computer_map_int[], respectiv player_map_int[]) se retine configuratia sub forma de 1 si 0 ce va fi utilizata in jocul inceput pana la finalizarea jocului sau pana cand utilizatorul alege Resume sau Quit din meniu (care se deschide apasand tasta 'q'). In cealalta (computer_seen[][] si player_seen[][]) se retin celulele care au fost alese pana acum de jucator, respectiv de computer din harta celuilalt (1 - atacata, 0 - neatinsa).
+
+Odata inceput un joc nou se genereaza cu ajutorul functiilor Generate_Map, Check_vert si Check_hor, o configuratie valida pentru gridul computerului. Tot in cazul in care jucatorul se afla intr-un "New game" matricile computer_seen si player_seen sunt initializate cu 0-uri. 
+
+In continuare, atat Resume cat si New Game apeleaza aceleasi functii. Se creeaza o fereastra pentru joc si cate o subfereastra pentru fiecare grid. Se vor afisa mai intai configuratiile asa cum sunt vizibile pentru jucator (la New Game, harta lui este intacta si nu vede unde sunt barci pe harta calculatorului, iar la Resume sunt afisate hartile in starea in care se aflau atunci cand a fost intrerupt jocul). 
+
+Exista o functie pentru mutarea computerului si una pentru cea a jucatorului. Functia computerului se foloseste de rand() pentru a alege coordonatele unei celule. Se verifica in matricea player_seen daca celula respectiva a mai fost aleasa si daca da, se mai genereaza coordonate pana se gaseste o celula care nu a mai fost atinsa. Daca in celula aleasa se afla la coordnatele echivalente in matricea player_map_int un 1 atunci, computerul a nimerit o bucata de barca. X ul prin care era marcata bucata de barca neatacata se transforma intr-un "#". Daca in player_map_int la coordonatele respective se gaseste un 0, atunci spatiul din grid devine "-". Daca computerul a nimerit o bucata de barca mai primeste o alegetre.
+
+Functia pentru mutarea jucatorului presupune afisarea cursorului. Se muta cursorul pana in pozitia pe care dorim sa o alegem. Daca apasam enter se verifica daca la coordonatele echivalente in computer_map_int se afla un 0 sau un 1 si in functie de asta se afiseaza un X sau "-". 
+
+Retinem scorul fiecaruia, iar cand unul dintre ele ajunge la 20 se iese din functia Resume sau New Game si se apeleaza functia Score. Aceasta functie afiseaza daca jucatorul a castigat sau a pierdut si afiseaza scorul, calculat cu ajutor functiilor Comp_score sau Player_score. Dupa apasarea unei taste se revine la meniu.
+
+
+
