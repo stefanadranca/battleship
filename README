@@ -1,4 +1,4 @@
-DRANCA STEFANA-IOANA 314CC
+DRANCA STEFANA-IOANA
 
 Cand se apeleaza executabilul trebuie adaugate ca argumente in linia de comanda fisiere ce contin sub forma de matrici de 0 si 1 (1 acolo unde sunt parti de vapoare si 0 unde nu), configuratii valide pentru harta jucatorului. Un exemplu este fisierul player_map. In cazul in care nu se dau argumente de comanda se inchide automat programul. Odata ce programul este pornit, se afiseaza meniul care contine New Game, Resume sau Quit. Daca se alege New Game se cere jucatoruui sa aleaga numarul fisierului care sa ii genereze gridul. Atunci cand jucatorul intra pentru prima data in joc, daca jucatorul alege Resume, rezultatul va fi echivalent cu optiunea New Game (functia Check_first verifica daca jucatorul a mai inceput un joc sau nu, verificand daca a atacat vreo celula din gridul computerului).
  
